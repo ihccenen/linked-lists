@@ -1,4 +1,4 @@
-import Node from './Nodes.js';
+import Node from './Nodes';
 
 class LinkedList {
   #head;
