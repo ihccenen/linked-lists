@@ -1,4 +1,4 @@
-import Node from './Nodes';
+import Node from './Nodes.js';
 
 class LinkedList {
   #head;
@@ -12,7 +12,7 @@ class LinkedList {
 
   append(value) {
     if (this.#head === null) {
-      this.#head = new Node(value);
+      this.prepend(value);
 
       return;
     }
@@ -42,6 +42,48 @@ class LinkedList {
     }
 
     return temp;
+  }
+
+  insertAt(value, index) {
+    if (index < 1) {
+      this.prepend(value);
+
+      return;
+    }
+
+    let count = 1;
+    let temp = this.#head;
+
+    while (count < index && temp.next !== null) {
+      temp = temp.next;
+      count += 1;
+    }
+
+    temp.next = new Node(value, temp.next);
+  }
+
+  removeAt(index) {
+    if (index < 0) return;
+
+    if (index === 0) {
+      this.#head = this.#head.next;
+
+      return;
+    }
+
+    let curr = this.#head;
+    let prev = null;
+    let count = 0;
+
+    while (curr !== null && count < index) {
+      prev = curr;
+      curr = curr.next;
+      count += 1;
+    }
+
+    if (curr == null) return;
+
+    prev.next = curr.next;
   }
 
   pop() {
