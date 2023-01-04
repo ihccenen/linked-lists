@@ -60,6 +60,8 @@ class LinkedList {
     }
 
     temp.next = new Node(value, temp.next);
+
+    console.log(this.#head);
   }
 
   removeAt(index) {
@@ -153,3 +155,11 @@ class LinkedList {
     return this.#tail;
   }
 }
+
+const test = new LinkedList();
+
+test.insertAt(1, -10);
+test.insertAt(2, 1);
+test.insertAt(3, 2);
+test.insertAt(4, 3);
+test.insertAt(5, 14);
